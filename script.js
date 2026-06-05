@@ -1,118 +1,179 @@
-async function getInfo() {
-    const output = document.getElementById("output");
+let users = JSON.parse(localStorage.getItem("users")) || [];
 
-    output.innerHTML = "<h2>Loading...</h2>";
+function saveData(){
 
-    try {
-        const response = await fetch(
-            "https://runi67it39.execute-api.us-east-2.amazonaws.com/info"
-        );
+localStorage.setItem(
+"users",
+JSON.stringify(users)
+);
 
-        const data = await response.json();
+updateDashboard();
 
-        output.innerHTML = `
-            <div class="profile-card">
-
-                <div class="images">
-                    <img src="jax.jpg" alt="Jax">
-                    <img src="ai-bg.jpg" alt="AI Robot">
-                </div>
-
-                <h2>${data.name}</h2>
-
-                <p><span class="label">Major:</span> ${data.major}</p>
-                <p><span class="label">School:</span> ${data.school}</p>
-                <p><span class="label">Career Goal:</span> ${data.goal}</p>
-                <p><span class="label">Business:</span> ${data.business}</p>
-
-                <h3>Skills</h3>
-                <ul>
-                    <li>AWS</li>
-                    <li>Python</li>
-                    <li>JavaScript</li>
-                    <li>HTML</li>
-                    <li>CSS</li>
-                </ul>
-
-                <h3>Projects</h3>
-                <ul>
-                    <li>AWS Cloud Project</li>
-                    <li>Basketball Training Brand</li>
-                    <li>Power BI Dashboard</li>
-                </ul>
-
-                <h3>Certifications</h3>
-                <ul>
-                    <li>AWS Certified Cloud Practitioner</li>
-                </ul>
-
-                <h3>Contact</h3>
-                <p><span class="label">Email:</span> jaxfelder04@gmail.com</p>
-                <p><span class="label">Location:</span> Laurel, MD</p>
-
-            </div>
-        `;
-    } catch (error) {
-        output.innerHTML = "<h2>Failed to load data.</h2>";
-        console.log(error);
-    }
+displayUsers();
 }
 
-const titleText = "Welcome to Jax's AWS Project";
-let i = 0;
+function createUser(){
 
-function typeTitle() {
-    if (i < titleText.length) {
-        document.getElementById("typed-title").textContent += titleText.charAt(i);
-        i++;
-        setTimeout(typeTitle, 75);
-    }
+let name =
+document.getElementById("name").value;
+
+let username =
+document.getElementById("username").value;
+
+let department =
+document.getElementById("department").value;
+
+let group =
+document.getElementById("group").value;
+
+if(name === "" || username === ""){
+
+alert("Fill all fields");
+
+return;
 }
 
-window.onload = function () {
-    typeTitle();
+let user = {
+
+id:Date.now(),
+
+name:name,
+
+username:username,
+
+department:department,
+
+group:group,
+
+status:"Active"
 };
 
-const canvas = document.getElementById("particles");
-const ctx = canvas.getContext("2d");
+users.push(user);
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+saveData();
 
-let particles = [];
-
-for (let j = 0; j < 80; j++) {
-    particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        size: Math.random() * 3,
-        speedX: Math.random() * 1 - 0.5,
-        speedY: Math.random() * 1 - 0.5
-    });
+document.getElementById("name").value="";
+document.getElementById("username").value="";
 }
 
-function animateParticles() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+function updateDashboard(){
 
-    particles.forEach(particle => {
-        ctx.beginPath();
-        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-        ctx.fillStyle = "#00ff88";
-        ctx.fill();
+document.getElementById("totalUsers").innerText=
+users.length;
 
-        particle.x += particle.speedX;
-        particle.y += particle.speedY;
+document.getElementById("activeUsers").innerText=
+users.filter(
+u=>u.status==="Active"
+).length;
 
-        if (particle.x < 0 || particle.x > canvas.width) {
-            particle.speedX *= -1;
-        }
+document.getElementById("lockedUsers").innerText=
+users.filter(
+u=>u.status==="Locked"
+).length;
 
-        if (particle.y < 0 || particle.y > canvas.height) {
-            particle.speedY *= -1;
-        }
-    });
-
-    requestAnimationFrame(animateParticles);
+document.getElementById("disabledUsers").innerText=
+users.filter(
+u=>u.status==="Disabled"
+).length;
 }
 
-animateParticles();
+function lockUser(id){
+
+users.find(
+u=>u.id===id
+).status="Locked";
+
+saveData();
+}
+
+function unlockUser(id){
+
+users.find(
+u=>u.id===id
+).status="Active";
+
+saveData();
+}
+
+function disableUser(id){
+
+users.find(
+u=>u.id===id
+).status="Disabled";
+
+saveData();
+}
+
+function resetPassword(id){
+
+alert(
+"Password Reset Successful"
+);
+}
+
+function displayUsers(){
+
+let search =
+document.getElementById("search").value.toLowerCase();
+
+let output="";
+
+users.filter(user=>
+
+user.name.toLowerCase().includes(search)
+
+||
+
+user.username.toLowerCase().includes(search)
+
+).forEach(user=>{
+
+output += `
+
+<div class="user-card">
+
+<h2>${user.name}</h2>
+
+<p><strong>Username:</strong> ${user.username}</p>
+
+<p><strong>Department:</strong> ${user.department}</p>
+
+<p><strong>Security Group:</strong> ${user.group}</p>
+
+<p class="status ${user.status.toLowerCase()}">
+${user.status}
+</p>
+
+<div class="actions">
+
+<button onclick="lockUser(${user.id})">
+Lock Account
+</button>
+
+<button onclick="unlockUser(${user.id})">
+Unlock Account
+</button>
+
+<button onclick="disableUser(${user.id})">
+Disable Account
+</button>
+
+<button onclick="resetPassword(${user.id})">
+Reset Password
+</button>
+
+</div>
+
+</div>
+
+`;
+});
+
+document.getElementById(
+"userContainer"
+).innerHTML = output;
+}
+
+updateDashboard();
+
+displayUsers();
