@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jax Felder | Cloud & IT Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <canvas id="particles"></canvas>
+
+    <main class="hero-section">
+
+        <h1>
+            <span id="typed-title"></span>
+        </h1>
+
+        <h2 class="hero-subtitle">
+            AWS Certified Cloud Practitioner | IT Infrastructure | Cloud Computing
+        </h2>
+
+        <p class="hero-text">
+            Computer Information Systems student building hands-on cloud, help desk, and infrastructure projects
+            through AWS, Active Directory concepts, and IT support workflows.
+        </p>
+
+        <p class="hero-skills">
+            AWS Lambda • API Gateway • DynamoDB • Python • JavaScript • Active Directory • Help Desk Systems
+        </p>
+
+       <div class="hero-image-card">
+    <img id="rotating-image"
+         src="Cloud IT background.jpg"
+         alt="Cloud computing background">
+        </div>
+
+        <button onclick="getInfo()">View Professional Profile</button>
+
+        <div class="stats-container">
+            <div class="stat-card">
+                <h3>AWS</h3>
+                <p>Certified</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>3.8</h3>
+                <p>GPA</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>3</h3>
+                <p>Live IT Projects</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>IT</h3>
+                <p>Intern</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>1200+</h3>
+                <p>Career Points</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Business</h3>
+                <p>Owner</p>
+            </div>
+        </div>
+
+       <div class="quick-links">
+    <a href="Resume .docx.pdf" target="_blank">Resume</a>
+    <a href="https://github.com/jaxfelder04" target="_blank">GitHub</a>
+    <a href="https://www.linkedin.com/in/jaxfelder04" target="_blank">LinkedIn</a>
+    <a href="https://hihello.com/p/40dd8923-6345-402a-ac7b-eb580c33e2c4" target="_blank">Business Card</a>
+</div>
+
+<div class="hire-me-box">
+    <h2>Why Hire Me?</h2>
+
+    <div class="hire-grid">
+        <div>AWS Certified Cloud Practitioner</div>
+        <div>3.8 GPA CIS Student</div>
+        <div>Current IT Specialist Intern</div>
+        <div>Hands-on AWS Cloud Project</div>
+        <div>Active Directory Dashboard Project</div>
+        <div>Help Desk Ticketing System Project</div>
+        <div>Business Owner & Basketball Trainer</div>
+        <div>Strong Communication & Leadership</div>
+    </div>
+</div>
+
+        <div class="current-status">
+            <h2>Current Status</h2>
+            <p>IT Specialist Intern at Versa Integrated Solutions</p>
+            <p>AWS Certified Cloud Practitioner</p>
+            <p>Computer Information Systems Student | GPA 3.8</p>
+        </div>
+
+        <div class="timeline-section">
+    <h2>Career Timeline</h2>
+
+    <div class="timeline-item">
+        <h3>2024</h3>
+        <p>Earned AWS Certified Cloud Practitioner certification.</p>
+    </div>
+
+    <div class="timeline-item">
+        <h3>2025</h3>
+        <p>Built AWS Serverless Cloud Portfolio.</p>
+        <p>Built Enterprise Active Directory Dashboard.</p>
+        <p>Built IT Help Desk Ticketing System.</p>
+    </div>
+
+    <div class="timeline-item">
+        <h3>2026</h3>
+        <p>IT Specialist Intern at Versa Integrated Solutions.</p>
+        <p>B.S. Computer Information Systems at Stevenson University.</p>
+        <p>Seeking entry-level Cloud Support, IT Support, and Infrastructure roles.</p>
+    </div>
+</div>
+
+    </main>
+
+    <div id="output"></div>
+
+    <div class="portfolio-tabs">
+        <button onclick="showTab('about', this)">AWS Project</button>
+        <button onclick="showTab('active-directory', this)">Active Directory</button>
+        <button onclick="showTab('ticket-system', this)">Ticket System</button>
+        <button onclick="showTab('basketball-business', this)">Basketball Business</button>
+        <button onclick="showTab('links', this)">Contact</button>
+    </div>
+
+    <div id="about" class="tab-content">
+        <h2>AWS Serverless Cloud Project</h2>
+
+        <p>
+            This serverless web application demonstrates how a frontend website can communicate with cloud services
+            using AWS Amplify, API Gateway, Lambda, DynamoDB, Python, and JavaScript.
+        </p>
+
+        <h3>Architecture Flow</h3>
+        <p>
+            User → AWS Amplify → API Gateway → AWS Lambda → DynamoDB → JSON Response → Frontend Display
+        </p>
+
+        <h3>Skills Demonstrated</h3>
+        <p>
+            AWS Lambda, API Gateway, DynamoDB, IAM, Python, JavaScript, REST APIs, serverless architecture,
+            frontend/backend integration, cloud troubleshooting, and JSON data handling.
+        </p>
+    </div>
+
+    <div id="active-directory" class="tab-content">
+        <h2>Enterprise Active Directory Dashboard</h2>
+
+        <p>
+            This project simulates an enterprise-style Active Directory administration dashboard. It demonstrates user
+            account creation, password reset simulation, account lockouts, security groups, department management,
+            and help desk workflows.
+        </p>
+
+        <img class="project-screenshot" src="Active Directory ss.png" alt="Active Directory Dashboard Screenshot">
+
+        <h3>Skills Demonstrated</h3>
+        <p>
+            User management, password reset workflows, account lockout simulation, security groups, department
+            organization, search functionality, and system administration concepts.
+        </p>
+
+        <a href="https://github.com/jaxfelder04/enterprise-active-directory-dashboard" target="_blank">View GitHub</a>
+        <a href="https://main.dmpmlbz39x1kb.amplifyapp.com" target="_blank">View Live Demo</a>
+    </div>
+
+    <div id="ticket-system" class="tab-content">
+        <h2>IT Help Desk Ticketing System</h2>
+
+        <p>
+            This project is a simulated help desk ticketing platform for creating, prioritizing, tracking, and resolving
+            IT support requests.
+        </p>
+
+        <img class="project-screenshot" src="Ticket System IT ss.png" alt="Ticket System Screenshot">
+
+        <h3>Skills Demonstrated</h3>
+        <p>
+            Ticket creation, ticket prioritization, incident tracking, help desk workflows, issue resolution,
+            dashboard analytics, filtering, and search functionality.
+        </p>
+
+        <a href="https://github.com/jaxfelder04/helpdesk-ticketing-system" target="_blank">View GitHub</a>
+        <a href="https://main.d3mr8ko74bphyc.amplifyapp.com" target="_blank">View Live Demo</a>
+    </div>
+
+    <div id="basketball-business" class="tab-content">
+        <h2>Leadership & Basketball Business</h2>
+
+        <p>
+            JustAboutXcellence is my basketball training brand focused on skill development, guard training, confidence,
+            discipline, and game-speed player development.
+        </p>
+
+        <img class="project-screenshot" src="Basketball Website ss.png" alt="Basketball Business Website Screenshot">
+
+        <h3>Leadership & Entrepreneurship</h3>
+        <p>
+            Through basketball training, I manage client communication, scheduling, player development plans, business
+            branding, and training sessions.
+        </p>
+
+        <a href="https://jaxfelder04.wixsite.com/bball" target="_blank">View JustAboutXcellence Website</a>
+    </div>
+
+    <div id="links" class="tab-content">
+        <h2>Contact & Professional Links</h2>
+
+        <p><strong>Email:</strong> jaxfelder04@gmail.com</p>
+        <p><strong>Phone:</strong> 240-435-0990</p>
+
+        <a href="Resume .docx.pdf" target="_blank">Resume</a>
+        <a href="https://github.com/jaxfelder04" target="_blank">GitHub</a>
+        <a href="https://www.linkedin.com/in/jaxfelder04" target="_blank">LinkedIn</a>
+        <a href="mailto:jaxfelder04@gmail.com">Email Me</a>
+        <a href="https://hihello.com/p/40dd8923-6345-402a-ac7b-eb580c33e2c4" target="_blank">Virtual Business Card</a>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
